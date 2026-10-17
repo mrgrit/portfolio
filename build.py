@@ -65,6 +65,11 @@ def badge(p):
     return ""
 
 
+def since(p):
+    """시작한 달 (저장소 생성 월)."""
+    return f'<span class="since">{e(p["since"])}</span>' if p.get("since") else ""
+
+
 def frame(p):
     link = (p.get("live") or {}).get("url") or p.get("repo")
     addr = p.get("addr") or (host(p["live"]["url"]) if p.get("live") else "")
@@ -88,7 +93,7 @@ def card(p):
     return f"""<article class="card">
 {frame(p)}
 <div class="body">
-<div class="head"><h3>{e(p["name"])}</h3>{badge(p)}</div>
+<div class="head"><h3>{e(p["name"])}</h3>{badge(p)}{since(p)}</div>
 <p class="tagline">{e(p["tagline"])}</p>
 <p class="desc">{e(p["desc"])}</p>
 {chips(p)}
@@ -99,7 +104,7 @@ def card(p):
 
 def row(p):
     return f"""<article class="row">
-<div class="who"><h3>{e(p["name"])}</h3><p class="tagline">{e(p["tagline"])}</p></div>
+<div class="who"><h3>{e(p["name"])}</h3><p class="tagline">{e(p["tagline"])}</p>{since(p)}</div>
 <div class="what"><p class="desc">{e(p["desc"])}</p>{chips(p)}</div>
 {actions(p)}
 </article>"""
@@ -173,13 +178,14 @@ def main():
 <main>
 <section class="hero"><div class="wrap">
 <div>
-<p class="eyebrow">Dawn of AGI · Portfolio</p>
+<p class="eyebrow">{e(site["eyebrow"])}</p>
 <h1>{e(site["name"])}</h1>
 <p class="role"><b>{e(site["aka"])}</b> · {e(site["role"])}</p>
 <p class="lead">{e(site["lead"].format(n=len(live)))}</p>
 <blockquote class="motto">“{e(site["motto"])}”<cite>— {e(site["motto_from"])}</cite></blockquote>
 <div class="cta"><a class="btn primary" href="#live">가동 중인 시스템 보기</a>{ext(site["github"], f"GitHub {ARROW}", "btn")}</div>
 <dl class="stats">
+<div><dt>프로젝트</dt><dd>{len(projects)}</dd></div>
 <div><dt>바로 열리는 사이트</dt><dd>{len(live)}</dd></div>
 <div><dt>공개 저장소</dt><dd>{len(repos)}</dd></div>
 <div><dt>한국어 강좌</dt><dd>{len(lectures)}</dd></div>
