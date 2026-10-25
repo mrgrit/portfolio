@@ -807,6 +807,31 @@
             "FastAPI",
             "Ollama"
           ]
+        },
+        {
+          "name": "카르마 LAN 클라이언트",
+          "since": "2026.10",
+          "tagline": "Karma290 LAN 대전 클라이언트",
+          "desc": "원본 Karma290에 Windows 실행기와 입력 호환성 수정을 입히고, 중앙 서버 계정에 연결해 최대 8인 LAN 대전을 붙인 실험 버전입니다. 팀전 · 개인 데스매치, 무기별 숙련 승급, 방 목록 · 대기실 · 채팅을 갖췄고 설치 파일로 배포합니다.",
+          "stack": [
+            "JavaScript",
+            "C#",
+            "Inno Setup"
+          ],
+          "repo": "https://github.com/mrgrit/karma"
+        },
+        {
+          "name": "카르마 서버",
+          "since": "2026.10",
+          "tagline": "카르마 LAN 중앙 서버 · 학과 거래소",
+          "desc": "같은 LAN의 카르마 클라이언트를 위한 계정 · 방 관리 · 메시지 전달 · 계급 · 전적 · 출전 장비 저장 서버입니다. 대전 이용료를 학과 공동 금고로 모으는 거래소를 함께 운영하고, 코인 정산은 Besu QBFT 블록체인의 ERC-20 잔액으로 확정합니다.",
+          "stack": [
+            "Node.js",
+            "Solidity",
+            "Besu QBFT",
+            "Python"
+          ],
+          "repo": "https://github.com/mrgrit/karma_server"
         }
       ]
     },
